@@ -136,7 +136,6 @@ body * {
   /*justify-content : space-between;*/
 }
 
-#sitescan-panel,
 #options-container {
   flex-grow      : 0;
   flex-shrink    : 0;
@@ -185,7 +184,6 @@ body * {
   border-top : none;
 }
 
-#sitescan-container,
 #missions-container {
   flex-shrink    : 1;
   flex-grow      : 1;
@@ -200,7 +198,6 @@ body * {
   margin-right    : 15px;
 }
 
-#sitescan-list,
 #missions-list {
   flex-shrink    : 1;
   flex-grow      : 1;
@@ -586,11 +583,6 @@ input[type=range]::-ms-thumb {
 
 .accordion-icon .svg-icon {
   vertical-align : unset;
-}
-
-#sitescan-btn img {
-  margin-right   : 5px;
-  vertical-align : middle;
 }
 
 #flight-details-panel {

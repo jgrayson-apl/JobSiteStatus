@@ -68,39 +68,6 @@
       </div>
     </div>
 
-    <!-- SITE SCAN SIGN IN -->
-    <div class="js-modal modal-overlay" data-modal="signin-dialog">
-      <div class="modal-content column-8" aria-labelledby="modal" role="dialog">
-        <div class="content-row trailer-half">
-          <div class="font-size-3 text-theme">Site Scan Sign In</div>
-        </div>
-        <div class="panel trailer-half">
-          <label class="trailer-half">
-            <span>Email</span>
-            <input id="sitescan-user-email-input" type="email" required>
-          </label>
-          <label class="trailer-0">
-            <span>Password</span>
-            <input id="sitescan-user-pwd-input" type="password" required>
-          </label>
-        </div>
-        <div class="content-row leader-half">
-          <div id="sitescan-signin-label" class="text-red font-size--3 hide"></div>
-        </div>
-        <div class="content-row leader-quarter">
-          <img class="light-hide left" src="./assets/esri_science_of_where_white.png">
-          <img class="dark-hide left" src="./assets/esri_science_of_where.png">
-          <div class="content-row">
-            <div></div>
-            <div>
-              <button id="signin-ok-btn" class="btn btn-disabled">OK</button>
-              <button class="btn btn-red js-modal-toggle">Cancel</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- PRINT SIDE DRAWER -->
     <div class="drawer drawer-right js-drawer" data-drawer="print-drawer" tabindex="1">
       <nav class="drawer-nav" role="navigation">
@@ -134,15 +101,7 @@
         <div class="top-nav-link header-text esri-interactive margin-right-half tooltip tooltip-right" aria-label="building explorer">
           <span id="building-explorer-btn" class="btn btn-small btn-theme icon-ui-home hide">Building</span>
         </div>
-
-        <!-- SITE SCAN BUTTON -->
-        <div id="sitescan-link" class="top-nav-link header-text esri-interactive margin-right-half tooltip tooltip-right" aria-label="Site Scan">
-          <span id="sitescan-btn" class="btn btn-small btn-theme hide">
-            <img src="./assets/SiteScan.png" width="16" height="16">
-            <span>Site Scan</span>
-          </span>
-        </div>
-
+                
       </div>
       <!-- RIGHT ALIGNED -->
       <div class="content-row">
@@ -267,39 +226,7 @@
         </div>
 
       </div>
-
-      <!-- SITE SCAN PANEL -->
-      <div id="sitescan-panel" class="panel panel-no-padding panel-no-border column-7 animate-fade-in hide">
-        <div class="panel panel-white">
-          <div class="content-row trailer-quarter">
-            <div class="content-row">
-              <img src="./assets/SiteScan.png" width="24" height="24">
-              <span class="font-size-1 margin-left-half text-theme">Site Scan</span>
-            </div>
-            <button id="sitescan-signin-btn" class="btn-link font-size--3 right">Sign In</button>
-          </div>
-          <div class="panel">
-            <label class="trailer-half font-size-0">
-              <span>Organization:</span>
-              <select id="sitescan-org-select" class="hide"></select>
-            </label>
-            <label class="trailer-0 font-size-0">
-              <span>Project:</span>
-              <select id="sitescan-project-select" class="hide"></select>
-            </label>
-          </div>
-        </div>
-        <aside id="sitescan-container" class="side-nav" aria-role="complementary">
-          <div class="side-nav-title">
-            <span>
-              last modified:<span id="sitescan-project-modified-label"></span>
-            </span>
-            <mark id="sitescan-count" class="label right">0</mark>
-          </div>
-          <nav id="sitescan-list" role="navigation" aria-labelledby="sidenav"></nav>
-        </aside>
-      </div>
-
+            
     </div>
   </body>
 </html>

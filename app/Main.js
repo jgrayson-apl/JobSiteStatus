@@ -40,15 +40,14 @@ define([
   "esri/widgets/Compass",
   "esri/widgets/Measurement",
   "esri/widgets/BuildingExplorer",
-  "esri/widgets/Slice/SliceViewModel",
-  "./SiteScan/SiteScanAPI"
+  "esri/widgets/Slice/SliceViewModel"
 ], function(calcite, declare, ApplicationBase,
             i18n, itemUtils, domHelper, domConstruct,
             esriRequest, IdentityManager, Evented, watchUtils, promiseUtils, Portal,
             EsriMap, MapView, SceneView, Layer,
             projection, SpatialReference, webMercatorUtils,
             Home, Print, Compass, Measurement,
-            BuildingExplorer, SliceViewModel, SiteScanAPI){
+            BuildingExplorer, SliceViewModel){
 
   return declare([Evented], {
 
@@ -282,9 +281,6 @@ define([
      */
     applicationReady: function(jobsiteLayers, sceneView, mapView){
       return promiseUtils.create((resolve, reject) => {
-
-        // SITESCAN //
-        this.initializeSiteScan();
 
         // TOOLS PANEL //
         this.initializeToolsPanel(sceneView, mapView);
@@ -878,7 +874,7 @@ define([
             // FLIGHT INFO //
             const dateStr = jobsiteTagParts[1];
             const droneType = jobsiteTagParts[2];
-            // FROM SITESCAN: "survey" "crosshatch" "perimeterScan" "inspect" "panorama" "verticalScan" "corridor" //
+            // "survey" "crosshatch" "perimeterScan" "inspect" "panorama" "verticalScan" "corridor" //
             const flightType = jobsiteTagParts[3];
             const viewType = jobsiteTagParts[4];
 
@@ -1421,239 +1417,6 @@ define([
         }
       };
 
-    },
-
-    /**
-     *
-     */
-    initializeSiteScan: function(){
-
-      const utcFormatter = new Intl.DateTimeFormat('default', { timeZone: 'UTC' });
-
-      const urlParams = new URLSearchParams(location.search);
-      const siteScanParam = urlParams.get('sitescan');
-      if(siteScanParam && (siteScanParam.toLowerCase() === 'true')){
-
-        // SITESCAN API //
-        const siteScanAPI = new SiteScanAPI({});
-
-        // SIGN IN BUTTON //
-        const sitescanSigninBtn = document.getElementById('sitescan-signin-btn');
-        const signinOkBtn = document.getElementById('signin-ok-btn');
-        const sitescanUserEmailInput = document.getElementById('sitescan-user-email-input');
-        const sitescanUserPwdInput = document.getElementById('sitescan-user-pwd-input');
-        const sitescanSigninLabel = document.getElementById('sitescan-signin-label');
-        // SITE SCAN ORGANIZATION //
-        const sitescanOrgSelect = document.getElementById('sitescan-org-select');
-        // SITE SCAN PROJECT //
-        const sitescanProjectSelect = document.getElementById('sitescan-project-select');
-        // PROJECT LAST UPDATED //
-        const sitescanProjectModifiedLabel = document.getElementById('sitescan-project-modified-label');
-        const sitescanCount = document.getElementById('sitescan-count');
-        const sitescanList = document.getElementById('sitescan-list');
-
-        // SITE SCAN USER CHANGE //
-        siteScanAPI.watch('user', siteScanUser => {
-          if(siteScanUser){
-            sitescanSigninBtn.innerHTML = `(${siteScanUser.name}) Sign Out`;
-            sitescanSigninBtn.classList.add('authenticated');
-          } else {
-            sitescanSigninBtn.classList.remove('authenticated');
-            sitescanSigninBtn.innerHTML = `Sign In`;
-          }
-        });
-        // ORGANIZATION CHANGE //
-        siteScanAPI.watch('organizations', organizations => {
-          if(organizations){
-            for(const organization of organizations){
-              domConstruct.create('option', {
-                innerHTML: organization.name,
-                value: organization.id
-              }, sitescanOrgSelect);
-            }
-            sitescanOrgSelect.classList.remove('hide');
-          } else {
-            sitescanOrgSelect.classList.add('hide');
-            sitescanOrgSelect.innerHTML = '';
-
-          }
-        });
-        // PROJECTS CHANGE //
-        siteScanAPI.watch('projects', projects => {
-          if(projects){
-            for(const project of projects){
-              domConstruct.create('option', {
-                innerHTML: project.name,
-                value: project.id
-              }, sitescanProjectSelect);
-            }
-            sitescanProjectSelect.classList.remove('hide');
-          } else {
-            sitescanProjectSelect.classList.add('hide');
-            sitescanProjectSelect.innerHTML = '';
-          }
-        });
-        // PROJECT CHANGE //
-        siteScanAPI.watch('project', project => {
-          sitescanProjectModifiedLabel.innerHTML = (project != null) ? utcFormatter.format(new Date(project.updated)) : '';
-        });
-        // MISSIONS/FLIGHTS CHANGE //
-        siteScanAPI.watch('missions', missions => {
-          sitescanList.innerHTML = '';
-          sitescanCount.innerHTML = '0';
-          if(missions){
-
-            // TODO: HOW DO WE KNOW WHICH ONES TO LIST?
-            const flownMissions = missions.filter(mission => {
-              return mission.hasOwnProperty('startTime'); // created startTime flightMode
-            });
-
-            sitescanCount.innerHTML = flownMissions.length.toLocaleString();
-            flownMissions.forEach(mission => {
-
-              const missionNode = domConstruct.create('div', { className: 'side-nav-link' }, sitescanList);
-
-              domConstruct.create('div', {
-                className: "font-size-0 avenir-demi",
-                innerHTML: `${mission.name || mission.id}`
-              }, missionNode);
-
-              const flightMode = mission.flightMode || 'n/a';
-              const droneInfo = (mission.vehicle != null)
-                ? `${mission.vehicle.brand} ${mission.vehicle.model}`
-                : 'n/a'
-              const angle = (mission.flightModeParameters != null)
-                ? mission.flightModeParameters.gimbalAngle
-                : '??';
-
-              domConstruct.create('div', {
-                className: "padding-left-1 font-size--1",
-                innerHTML: `| ${flightMode} | ${droneInfo} | ${angle}&deg; |`
-              }, missionNode);
-
-
-              const bottomNode = domConstruct.create('div', {
-                className: "text-right",
-              }, missionNode);
-
-              const reportNode = domConstruct.create('a', {
-                className: 'margin-left-half hide',
-                innerHTML: 'Processing Report',
-                target: '_blank'
-              }, bottomNode);
-
-              domConstruct.create('span', {
-                className: "margin-left-half font-size--3 avenir-italic",
-                innerHTML: `${utcFormatter.format(new Date(mission.created))}`
-              }, bottomNode);
-
-              // GET FLIGHT DETAILS //
-              missionNode.addEventListener('click', () => {
-                siteScanAPI.getFlightDataById(mission.id).then(flightInfo => {
-
-                  if(flightInfo.metadata){
-                    flightInfo.metadata = JSON.parse(flightInfo.metadata);
-                    if(flightInfo.metadata.encodedParameters){
-                      flightInfo.metadata.encodedParameters = JSON.parse(flightInfo.metadata.encodedParameters);
-                    }
-                    if(flightInfo.metadata.encodedManualCamPoints){
-                      flightInfo.metadata.encodedManualCamPoints = JSON.parse(flightInfo.metadata.encodedManualCamPoints);
-                    }
-                  }
-
-                  const dataInfo = [];
-                  for(let dataType in flightInfo.data){
-                    if(flightInfo.data.hasOwnProperty(dataType) && flightInfo.data[dataType].current){
-                      //console.info(dataType, flightInfo.data[dataType].current.url);
-                      dataInfo.push(`[ <span class="avenir-demi">${dataType}</span> ]<br>${flightInfo.data[dataType].current.url}`);
-
-                      if((dataType === 'processingReport') && (reportNode.classList.contains('hide'))){
-                        reportNode.href = flightInfo.data[dataType].current.url;
-                        reportNode.classList.remove('hide');
-                      }
-                    }
-                  }
-
-                  const details = [`<pre class="font-size--3">${JSON.stringify(flightInfo, null, '  ')}</pre>`];
-                  if(dataInfo.length){
-                    details.push(`<div class="font-size--3">${dataInfo.join('<hr>')}</div>`);
-                  }
-
-                  const flightDetailsPanel = document.getElementById('flight-details-panel');
-                  flightDetailsPanel.innerHTML = details.join('<br>');
-                  calcite.bus.emit('modal:open', { id: 'flight-dialog' });
-
-                });
-              });
-
-            });
-          }
-        });
-
-        const validateOkBtn = () => {
-          signinOkBtn.classList.toggle('btn-disabled', (!sitescanUserEmailInput.validity.valid) || (!sitescanUserPwdInput.validity.valid))
-        };
-        sitescanUserEmailInput.addEventListener('input', () => {
-          // sitescanUserEmailInput.classList.toggle('input-success', sitescanUserEmailInput.validity.valid);
-          sitescanUserEmailInput.classList.toggle('input-error', !sitescanUserEmailInput.validity.valid);
-          validateOkBtn();
-        });
-        sitescanUserPwdInput.addEventListener('input', () => {
-          // sitescanUserPwdInput.classList.toggle('input-success', sitescanUserPwdInput.validity.valid);
-          sitescanUserPwdInput.classList.toggle('input-error', !sitescanUserPwdInput.validity.valid);
-          validateOkBtn();
-        });
-
-        // const userPwd = 'apl-sitescan-609';
-        // SIGN IN DIALOG BTN //
-        signinOkBtn.addEventListener('click', () => {
-          const userEmail = sitescanUserEmailInput.value;
-          const userPwd = sitescanUserPwdInput.value;
-          siteScanAPI.signIn(userEmail, userPwd).then(siteScanUser => {
-            siteScanAPI.user = siteScanUser;
-            sitescanSigninLabel.innerHTML = '';
-            sitescanSigninLabel.classList.add('hide');
-            calcite.bus.emit('modal:close', { id: 'signin-dialog' });
-          }).catch(error => {
-            sitescanSigninLabel.innerHTML = error.message;
-            sitescanSigninLabel.classList.remove('hide');
-            siteScanAPI.user = null;
-          });
-        });
-        // SIGN IN/OUT LINK //
-        sitescanSigninBtn.addEventListener('click', () => {
-          if(sitescanSigninBtn.classList.contains('authenticated')){
-            siteScanAPI.user = null;
-          } else {
-            calcite.bus.emit('modal:open', { id: 'signin-dialog' });
-          }
-        });
-
-        // ORGANIZATION SELECT //
-        sitescanOrgSelect.addEventListener('change', () => {
-          const organizationId = sitescanOrgSelect.value;
-          siteScanAPI.getOrganizationById(organizationId).then(organization => {
-            siteScanAPI.organization = organization;
-          }).catch(console.error);
-        });
-        // PROJECT SELECT //
-        sitescanProjectSelect.addEventListener('change', () => {
-          const projectId = sitescanProjectSelect.value;
-          siteScanAPI.getProjectById(projectId).then(project => {
-            siteScanAPI.project = project;
-          }).catch(console.error);
-        });
-
-        // BUTTON AND PANEL //
-        const sitescanPanel = document.getElementById('sitescan-panel');
-        const sitescanBtn = document.getElementById('sitescan-btn');
-        sitescanBtn.classList.remove('hide');
-        sitescanBtn.addEventListener('click', () => {
-          sitescanBtn.classList.toggle('selected');
-          sitescanPanel.classList.toggle('hide');
-        });
-
-      }
     }
 
   });
