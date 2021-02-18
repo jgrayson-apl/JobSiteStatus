@@ -1,0 +1,830 @@
+{
+  "id": "a44c540f-9e51-4008-ae55-bc2b6d553996",
+  "name": "New Building E Perimeter Scan - 4 Altitudes",
+  "flownBy": "17b9a604-77ae-4411-9ce3-0dc263ec03ee",
+  "metadata": {
+    "endTime": 1599250590000,
+    "estimatedDuration": 575.5696741134384,
+    "vehicleFirmware": "01.02.0450",
+    "latitudeAtLastPhotoTaken": 34.05805542721252,
+    "vehicleType": "m200",
+    "latitude": 34.058461243999524,
+    "altitudeAtLastPhotoTaken": 38.1,
+    "encodedManualCamPoints": {
+      "manualCamPoints": [
+        []
+      ]
+    },
+    "lastNavigationPointIndex": 79,
+    "upload_state": 3,
+    "estimatedCoverageArea": 0,
+    "lastCameraPointIndex": 117,
+    "shotType": "PerimeterScan",
+    "vehicleMacAddress": "095XF66002020Y",
+    "jobLocation": "",
+    "longitudeAtLastPhotoTaken": -117.19739982226307,
+    "startTime": 1599250034000,
+    "longitude": -117.19836985013346,
+    "encodedParameters": {
+      "maxRoiAltitude": 0,
+      "videoMode": false,
+      "version": 5,
+      "crosshatched": false,
+      "startFromFuthestWaypoint": false,
+      "locationArea": {
+        "coordinates": [
+          [
+            [
+              34.0579351995359,
+              -117.19808651846202
+            ],
+            [
+              34.05946040208401,
+              -117.19808651846202
+            ],
+            [
+              34.05946040208401,
+              -117.19597753945988
+            ],
+            [
+              34.0579351995359,
+              -117.19597753945988
+            ],
+            [
+              34.0579351995359,
+              -117.19808651846202
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "minRoiAltitude": 0,
+      "minAltitude": 38.099998474121094,
+      "continueWithoutLink": false,
+      "sideMode": false,
+      "altitude": 38.10000228881836,
+      "type": "com.3dr.site-scan.perimeter-parameters",
+      "slope": 90,
+      "fixedSlopeMode": false,
+      "hatchAngle": 0,
+      "polygon": [
+        [
+          34.05905067941201,
+          -117.1966708336214
+        ],
+        [
+          34.058495004300134,
+          -117.19663824212651
+        ],
+        [
+          34.05849682231733,
+          -117.19716341095277
+        ],
+        [
+          34.0583359831938,
+          -117.19716356714298
+        ],
+        [
+          34.05833021263549,
+          -117.19742309581142
+        ],
+        [
+          34.05906115551105,
+          -117.19742953823177
+        ],
+        [
+          34.059065455118876,
+          -117.19717733498979
+        ],
+        [
+          34.059043810370476,
+          -117.19716093355996
+        ]
+      ],
+      "offset": 30.479999542236328,
+      "locationName": "",
+      "maxAltitude": 60.959999084472656,
+      "rtlAltitude": 60.959999084472656,
+      "gimbalAngle": -90,
+      "geofenceEnabled": false,
+      "overlap": [
+        0.699999988079071,
+        0.6499999761581421
+      ],
+      "oneAltitude": false,
+      "fixedGimbalMode": false,
+      "autoHatchAngle": 0,
+      "takeoffLocation": {
+        "type": "Point",
+        "coordinates": [
+          34.05894990948888,
+          -117.19802887466068
+        ]
+      },
+      "width": 0
+    },
+    "cameraSettingsMode": "Day Light",
+    "panoramaEnabled": false,
+    "estimatedImageResolution": 0,
+    "source": "com.3dr.site-scan",
+    "version": 5
+  },
+  "created": "2020-09-04T19:57:09.882Z",
+  "projectId": "08818acb-7607-490d-a158-80a60a47b85b",
+  "cas": 1603129051051720700,
+  "flightPlan": "403e0b29-5eaa-4013-9659-85312be17239",
+  "vehicle": {
+    "brand": "dji",
+    "model": "m200",
+    "serial": "095XF66002020Y",
+    "firmware": "01.02.0450",
+    "battery": [
+      {
+        "serial": "0KPAF5P23100KU",
+        "fullChargeCapacitymAh": 4166,
+        "lifetimeRemainingPercent": 98,
+        "warnings": [],
+        "firmware": "01.00.00.87"
+      },
+      {
+        "serial": "0KPAE7423103MV",
+        "fullChargeCapacitymAh": 4187,
+        "lifetimeRemainingPercent": 99,
+        "warnings": [],
+        "firmware": "01.00.00.87"
+      }
+    ],
+    "camera": [
+      {
+        "model": "x4s",
+        "serial": "09CLF6500600ED",
+        "zoom": 1
+      }
+    ]
+  },
+  "flightMode": "perimeterScan",
+  "flightModeParameters": {
+    "flightMode": "perimeterScan",
+    "version": 5,
+    "offset": 30.479999542236328,
+    "altitude": 38.10000228881836,
+    "rtlAltitude": 60.959999084472656,
+    "minAltitude": 38.099998474121094,
+    "maxAltitude": 60.959999084472656,
+    "overlap": [
+      0.699999988079071,
+      0.6499999761581421
+    ],
+    "flightPoints": {
+      "coordinates": [
+        [
+          [
+            -117.1966708336214,
+            34.05905067941201
+          ],
+          [
+            -117.19663824212651,
+            34.058495004300134
+          ],
+          [
+            -117.19716341095277,
+            34.05849682231733
+          ],
+          [
+            -117.19716356714298,
+            34.0583359831938
+          ],
+          [
+            -117.19742309581142,
+            34.05833021263549
+          ],
+          [
+            -117.19742953823177,
+            34.05906115551105
+          ],
+          [
+            -117.19717733498979,
+            34.059065455118876
+          ],
+          [
+            -117.19716093355996,
+            34.059043810370476
+          ],
+          [
+            -117.1966708336214,
+            34.05905067941201
+          ]
+        ]
+      ],
+      "type": "Polygon"
+    },
+    "videoMode": false,
+    "oneAltitudeEnabled": false,
+    "gimbalAngle": -90,
+    "fixedGimbalMode": false
+  },
+  "locationName": "",
+  "locationArea": {
+    "coordinates": [
+      [
+        [
+          -117.19808651846202,
+          34.0579351995359
+        ],
+        [
+          -117.19808651846202,
+          34.05946040208401
+        ],
+        [
+          -117.19597753945988,
+          34.05946040208401
+        ],
+        [
+          -117.19597753945988,
+          34.0579351995359
+        ],
+        [
+          -117.19808651846202,
+          34.0579351995359
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  },
+  "takeoffLocation": {
+    "coordinates": [
+      -117.19802887466068,
+      34.05894990948888
+    ],
+    "type": "Point"
+  },
+  "startTime": "2020-09-04T20:07:14Z",
+  "endTime": "2020-09-04T20:16:30Z",
+  "state": "photosUploaded",
+  "starred": false,
+  "checklist": {
+    "content": {
+      "83eeb137-5bbe-46f2-bb27-50fd1b549727": "Sky Clear",
+      "a9f62b9e-a437-4c5f-9444-7ca96577253d": "true",
+      "a72504fa-8bf8-4f70-a843-4a3d25ed814b": "Christian Harder",
+      "240ab58c-9764-4872-a452-8d00e8ba7c66": "true",
+      "1672a4e0-e4b6-4f52-9e09-6fe74cfbcce0": "Class D",
+      "34302637-cc2c-423a-a89a-adf9075e21ee": "true",
+      "6281f402-7896-488e-b624-9937762146a4": "true",
+      "e400cd63-dea3-45a6-9901-7c947b6dca45": "true",
+      "bbfb2651-3f13-4440-b18b-ccc1f54fd1bd": "10-20 kts",
+      "77dc8ad3-cc71-4105-8ef5-8ac2670c1f51": "≥5 SM",
+      "7c776c42-dd20-410f-aa6b-52bd62a5f4d6": "true",
+      "f96905c3-83e1-4a80-b215-33b6398c5d4c": "true",
+      "1e11e3ca-a6ae-4542-a8f1-281f7cefe78e": "true"
+    },
+    "schema": "a850fffd-2095-440e-a271-a8a9d849b7b0"
+  },
+  "layerSettings": {
+    "elevationModelSource": "DTM"
+  },
+  "data": {
+    "pix4dParams": {},
+    "pavementCracks": {},
+    "dtm": {
+      "current": {
+        "id": "82c87b76-88ac-4323-b89b-86a63d4cded1",
+        "fromProcess": "67f584fd-d934-4b70-a25c-eac369d49384",
+        "created": "2020-09-04T22:48:21.867Z",
+        "name": "DTM (Digital Terrain Model)",
+        "processType": "pix4d",
+        "settings": {
+          "pix4d": {
+            "photoCount": 117,
+            "gigapixels": 2.335537152,
+            "gcpTagsCount": 0,
+            "processingOptions": {
+              "meshResolution": "Medium",
+              "pointCloudSize": "Half",
+              "gsdMultiple": 1,
+              "geometricallyVerified": true,
+              "matchStrategy": "AutoOblique",
+              "useProcessingArea": true,
+              "rcs": false,
+              "version": "default",
+              "imageVerticalCS": "WGS84"
+            }
+          }
+        },
+        "url": "https://sitescan-data.arcgis.com/77dVOqutZpSGbhuE0983vKVkCS-AKGsPwA2aAVcAAAAA/d/a44c540f-9e51-4008-ae55-bc2b6d553996/p4d-67f584fd-d934-4b70-a25c-eac369d49384/dtm.tif/New_Building_E_Perimeter_Scan_-_4_Altitudes-DTM_Digital_Terrain_Model.tiff",
+        "contentLength": 2423253,
+        "contentType": "image/tiff"
+      }
+    },
+    "huginPto": {},
+    "rcs": {},
+    "fbx": {
+      "current": {
+        "id": "76bfd19e-407a-4229-b882-4e657f5bad9e",
+        "fromProcess": "67f584fd-d934-4b70-a25c-eac369d49384",
+        "created": "2020-09-04T22:49:08.734Z",
+        "name": "3D Mesh (FBX)",
+        "processType": "pix4d",
+        "settings": {
+          "pix4d": {
+            "photoCount": 117,
+            "gigapixels": 2.335537152,
+            "gcpTagsCount": 0,
+            "processingOptions": {
+              "meshResolution": "Medium",
+              "pointCloudSize": "Half",
+              "gsdMultiple": 1,
+              "geometricallyVerified": true,
+              "matchStrategy": "AutoOblique",
+              "useProcessingArea": true,
+              "rcs": false,
+              "version": "default",
+              "imageVerticalCS": "WGS84"
+            }
+          }
+        },
+        "url": "https://sitescan-data.arcgis.com/l01_6iBpmrp9ply7FCwqOhJNGjOQ93vUwA2aAVgAAAAA/d/a44c540f-9e51-4008-ae55-bc2b6d553996/p4d-67f584fd-d934-4b70-a25c-eac369d49384/mesh.fbx/New_Building_E_Perimeter_Scan_-_4_Altitudes-3D_Mesh_FBX.fbx",
+        "contentLength": 44113440,
+        "contentType": "application/x-fbx"
+      }
+    },
+    "CameraPose": {
+      "current": {
+        "id": "6fd6062c-97aa-4ed9-acad-7f3e3f2ea618",
+        "fromProcess": "67f584fd-d934-4b70-a25c-eac369d49384",
+        "created": "2020-09-04T22:05:46.475Z",
+        "name": "cameraPose",
+        "processType": "pix4d",
+        "settings": {
+          "pix4d": {
+            "photoCount": 117,
+            "gigapixels": 2.335537152,
+            "gcpTagsCount": 0,
+            "processingOptions": {
+              "meshResolution": "Medium",
+              "pointCloudSize": "Half",
+              "gsdMultiple": 1,
+              "geometricallyVerified": true,
+              "matchStrategy": "AutoOblique",
+              "useProcessingArea": true,
+              "rcs": false,
+              "version": "default",
+              "imageVerticalCS": "WGS84"
+            }
+          }
+        },
+        "url": "https://sitescan-data.arcgis.com/xSuwkrIV_hvrYlHSNsb1pZ9OcIgyGRZBwA2aAWIAAAAA/d/a44c540f-9e51-4008-ae55-bc2b6d553996/p4d-67f584fd-d934-4b70-a25c-eac369d49384/camera_params.json/New_Building_E_Perimeter_Scan_-_4_Altitudes-cameraPose.json",
+        "contentLength": 93097,
+        "contentType": "application/json"
+      }
+    },
+    "wgs84ThermalMap": {},
+    "processingReportXml": {
+      "current": {
+        "id": "32060644-109e-4512-8bcc-dfd65345c85c",
+        "fromProcess": "67f584fd-d934-4b70-a25c-eac369d49384",
+        "created": "2020-09-04T22:47:35.790Z",
+        "name": "Processing Report",
+        "processType": "pix4d",
+        "settings": {
+          "pix4d": {
+            "photoCount": 117,
+            "gigapixels": 2.335537152,
+            "gcpTagsCount": 0,
+            "processingOptions": {
+              "meshResolution": "Medium",
+              "pointCloudSize": "Half",
+              "gsdMultiple": 1,
+              "geometricallyVerified": true,
+              "matchStrategy": "AutoOblique",
+              "useProcessingArea": true,
+              "rcs": false,
+              "version": "default",
+              "imageVerticalCS": "WGS84"
+            }
+          }
+        },
+        "url": "https://sitescan-data.arcgis.com/DDz8rpplW5Obua5SjCI1IHtUhP-Pla2AwA2aAVoAAAAA/d/a44c540f-9e51-4008-ae55-bc2b6d553996/p4d-67f584fd-d934-4b70-a25c-eac369d49384/report.xml/New_Building_E_Perimeter_Scan_-_4_Altitudes-Processing_Report.xml",
+        "contentLength": 23057,
+        "contentType": "application/xml"
+      }
+    },
+    "ortho": {
+      "current": {
+        "id": "78ee40fd-e63f-425c-9f0a-a7d357f8b84c",
+        "fromProcess": "67f584fd-d934-4b70-a25c-eac369d49384",
+        "created": "2020-09-04T22:48:17.163Z",
+        "name": "Orthomosaic",
+        "processType": "pix4d",
+        "settings": {
+          "pix4d": {
+            "photoCount": 117,
+            "gigapixels": 2.335537152,
+            "gcpTagsCount": 0,
+            "processingOptions": {
+              "meshResolution": "Medium",
+              "pointCloudSize": "Half",
+              "gsdMultiple": 1,
+              "geometricallyVerified": true,
+              "matchStrategy": "AutoOblique",
+              "useProcessingArea": true,
+              "rcs": false,
+              "version": "default",
+              "imageVerticalCS": "WGS84"
+            }
+          }
+        },
+        "url": "https://sitescan-data.arcgis.com/GbP7SpGWJtvEmKCi5EA8oX3G2YldYBY5wA2aAV8AAAAA/d/a44c540f-9e51-4008-ae55-bc2b6d553996/p4d-67f584fd-d934-4b70-a25c-eac369d49384/ortho-image.tif/New_Building_E_Perimeter_Scan_-_4_Altitudes-Orthomosaic.tiff",
+        "contentLength": 60199835,
+        "contentType": "image/tiff",
+        "thumbnails": {
+          "preview": {
+            "width": 1067,
+            "height": 1258,
+            "url": "https://sitescan-data.arcgis.com/Y91VM-7dyzvc7NhrlbXDRwPTlN_M3Nd7wA2aAWEAAAAA/t/a44c540f-9e51-4008-ae55-bc2b6d553996/p4d-67f584fd-d934-4b70-a25c-eac369d49384/ortho.preview.png",
+            "contentType": "image/png"
+          },
+          "thumb512": {
+            "width": 434,
+            "height": 512,
+            "url": "https://sitescan-data.arcgis.com/Kqlqh5jrAlqJhdXRVaQwvuBjJMe6bEG7wA2aAV0AAAAA/t/a44c540f-9e51-4008-ae55-bc2b6d553996/p4d-67f584fd-d934-4b70-a25c-eac369d49384/ortho.512.png",
+            "contentType": "image/png"
+          }
+        },
+        "tileset": {
+          "type": "raster",
+          "minzoom": 12,
+          "maxzoom": 23,
+          "bounds": [
+            -117.19776033660109,
+            34.05805506137085,
+            -117.1963070566231,
+            34.059341627348466
+          ],
+          "tiles": [
+            "https://sitescan-data.arcgis.com/8d3xGcowIz7UAEV8EtgpTTuzOy9kYPgQwA2aAVUAAQAA/w/a44c540f-9e51-4008-ae55-bc2b6d553996/p4d-67f584fd-d934-4b70-a25c-eac369d49384/ortho/{z}/{x}/{y}.png"
+          ],
+          "tileSize": 256
+        }
+      }
+    },
+    "wgs84dtm": {
+      "current": {
+        "id": "8f0d3b2c-e3c3-4173-a4f4-599f94060a26",
+        "fromProcess": "67f584fd-d934-4b70-a25c-eac369d49384",
+        "created": "2020-09-04T22:48:21.867Z",
+        "name": "Resized DTM",
+        "processType": "pix4d",
+        "settings": {
+          "pix4d": {
+            "photoCount": 117,
+            "gigapixels": 2.335537152,
+            "gcpTagsCount": 0,
+            "processingOptions": {
+              "meshResolution": "Medium",
+              "pointCloudSize": "Half",
+              "gsdMultiple": 1,
+              "geometricallyVerified": true,
+              "matchStrategy": "AutoOblique",
+              "useProcessingArea": true,
+              "rcs": false,
+              "version": "default",
+              "imageVerticalCS": "WGS84"
+            }
+          }
+        },
+        "url": "https://sitescan-data.arcgis.com/xrs8VEXQF44Ot62d2ogWQZRrNff6beSkwA2aAVwAAAAA/d/a44c540f-9e51-4008-ae55-bc2b6d553996/p4d-67f584fd-d934-4b70-a25c-eac369d49384/wgs84dtm.tif/New_Building_E_Perimeter_Scan_-_4_Altitudes-Resized_DTM.tiff",
+        "contentLength": 2729461,
+        "contentType": "image/tiff"
+      }
+    },
+    "thermalMap": {},
+    "las": {
+      "current": {
+        "id": "930ba556-82e6-4adb-a9b6-46bd766cb195",
+        "fromProcess": "67f584fd-d934-4b70-a25c-eac369d49384",
+        "created": "2020-09-04T22:49:08.734Z",
+        "name": "Point Cloud",
+        "processType": "pix4d",
+        "settings": {
+          "pix4d": {
+            "photoCount": 117,
+            "gigapixels": 2.335537152,
+            "gcpTagsCount": 0,
+            "processingOptions": {
+              "meshResolution": "Medium",
+              "pointCloudSize": "Half",
+              "gsdMultiple": 1,
+              "geometricallyVerified": true,
+              "matchStrategy": "AutoOblique",
+              "useProcessingArea": true,
+              "rcs": false,
+              "version": "default",
+              "imageVerticalCS": "WGS84"
+            }
+          }
+        },
+        "url": "https://sitescan-data.arcgis.com/yEO_hyfseRCJriLYxeF6hspMd_P_ki7PwA2aAWIAAAAA/d/a44c540f-9e51-4008-ae55-bc2b6d553996/p4d-67f584fd-d934-4b70-a25c-eac369d49384/pointcloud.las.zip/New_Building_E_Perimeter_Scan_-_4_Altitudes-Point_Cloud.zip",
+        "contentLength": 100470424,
+        "contentType": "application/x-las+zip"
+      }
+    },
+    "equirectangularPanorama": {},
+    "slpk": {
+      "current": {
+        "id": "3f981640-1286-4b7e-bf59-27350d05055e",
+        "fromProcess": "67f584fd-d934-4b70-a25c-eac369d49384",
+        "created": "2020-09-04T22:49:08.735Z",
+        "name": "3D Mesh (SLPK)",
+        "processType": "pix4d",
+        "settings": {
+          "pix4d": {
+            "photoCount": 117,
+            "gigapixels": 2.335537152,
+            "gcpTagsCount": 0,
+            "processingOptions": {
+              "meshResolution": "Medium",
+              "pointCloudSize": "Half",
+              "gsdMultiple": 1,
+              "geometricallyVerified": true,
+              "matchStrategy": "AutoOblique",
+              "useProcessingArea": true,
+              "rcs": false,
+              "version": "default",
+              "imageVerticalCS": "WGS84"
+            }
+          }
+        },
+        "url": "https://sitescan-data.arcgis.com/mt-LzzhNs0M6nZDms5HIhYbYSwJU3vh-wA2aAVkAAAAA/d/a44c540f-9e51-4008-ae55-bc2b6d553996/p4d-67f584fd-d934-4b70-a25c-eac369d49384/mesh.slpk/New_Building_E_Perimeter_Scan_-_4_Altitudes-3D_Mesh_SLPK.slpk",
+        "contentLength": 56695360,
+        "contentType": "application/x-slpk"
+      }
+    },
+    "pix4dReOpt": {},
+    "dem": {
+      "current": {
+        "id": "29d4394f-7b69-4fb9-bc59-8e6616549a97",
+        "fromProcess": "67f584fd-d934-4b70-a25c-eac369d49384",
+        "created": "2020-09-04T22:48:21.092Z",
+        "name": "DEM",
+        "processType": "pix4d",
+        "settings": {
+          "pix4d": {
+            "photoCount": 117,
+            "gigapixels": 2.335537152,
+            "gcpTagsCount": 0,
+            "processingOptions": {
+              "meshResolution": "Medium",
+              "pointCloudSize": "Half",
+              "gsdMultiple": 1,
+              "geometricallyVerified": true,
+              "matchStrategy": "AutoOblique",
+              "useProcessingArea": true,
+              "rcs": false,
+              "version": "default",
+              "imageVerticalCS": "WGS84"
+            }
+          }
+        },
+        "url": "https://sitescan-data.arcgis.com/33SA8zAa95I1dK3QocAF1RlX1he42GxowA2aAVcAAAAA/d/a44c540f-9e51-4008-ae55-bc2b6d553996/p4d-67f584fd-d934-4b70-a25c-eac369d49384/dsm.tif/New_Building_E_Perimeter_Scan_-_4_Altitudes-DEM.tiff",
+        "contentLength": 45660909,
+        "contentType": "image/tiff",
+        "thumbnails": {
+          "preview": {
+            "width": 1067,
+            "height": 1258,
+            "url": "https://sitescan-data.arcgis.com/15eWVdSIzS4iKtIEnhB-D7miYhfUu_5awA2aAV8AAAAA/t/a44c540f-9e51-4008-ae55-bc2b6d553996/p4d-67f584fd-d934-4b70-a25c-eac369d49384/dsm.preview.png",
+            "contentType": "image/png"
+          },
+          "thumb512": {
+            "width": 434,
+            "height": 512,
+            "url": "https://sitescan-data.arcgis.com/hJ1NJ0yYf-XyPmYf3dgkpWP9vDF4z-j1wA2aAVsAAAAA/t/a44c540f-9e51-4008-ae55-bc2b6d553996/p4d-67f584fd-d934-4b70-a25c-eac369d49384/dsm.512.png",
+            "contentType": "image/png"
+          }
+        }
+      }
+    },
+    "rcm": {},
+    "multispectralOrtho": {},
+    "processingReport": {
+      "current": {
+        "id": "79589844-6d1f-4a9f-99aa-905024a7b74c",
+        "fromProcess": "67f584fd-d934-4b70-a25c-eac369d49384",
+        "created": "2020-09-04T22:47:35.790Z",
+        "name": "Processing Report",
+        "processType": "pix4d",
+        "settings": {
+          "pix4d": {
+            "photoCount": 117,
+            "gigapixels": 2.335537152,
+            "gcpTagsCount": 0,
+            "processingOptions": {
+              "meshResolution": "Medium",
+              "pointCloudSize": "Half",
+              "gsdMultiple": 1,
+              "geometricallyVerified": true,
+              "matchStrategy": "AutoOblique",
+              "useProcessingArea": true,
+              "rcs": false,
+              "version": "default",
+              "imageVerticalCS": "WGS84"
+            }
+          }
+        },
+        "url": "https://sitescan-data.arcgis.com/NnnVhbKBsMesHnh6e7VWz_NiUp_W03H2wA2aAVoAAAAA/d/a44c540f-9e51-4008-ae55-bc2b6d553996/p4d-67f584fd-d934-4b70-a25c-eac369d49384/report.pdf/New_Building_E_Perimeter_Scan_-_4_Altitudes-Processing_Report.pdf",
+        "contentLength": 2546101,
+        "contentType": "application/pdf"
+      }
+    },
+    "obj": {
+      "current": {
+        "id": "5294ba8a-d0f4-4ddb-9958-1d642a8105be",
+        "fromProcess": "67f584fd-d934-4b70-a25c-eac369d49384",
+        "created": "2020-09-04T22:49:08.734Z",
+        "name": "3D Mesh",
+        "processType": "pix4d",
+        "settings": {
+          "pix4d": {
+            "photoCount": 117,
+            "gigapixels": 2.335537152,
+            "gcpTagsCount": 0,
+            "processingOptions": {
+              "meshResolution": "Medium",
+              "pointCloudSize": "Half",
+              "gsdMultiple": 1,
+              "geometricallyVerified": true,
+              "matchStrategy": "AutoOblique",
+              "useProcessingArea": true,
+              "rcs": false,
+              "version": "default",
+              "imageVerticalCS": "WGS84"
+            }
+          }
+        },
+        "url": "https://sitescan-data.arcgis.com/2cV2ECmwpQHc3S_Kmdl-cvl0XAV5eRyywA2aAVwAAAAA/d/a44c540f-9e51-4008-ae55-bc2b6d553996/p4d-67f584fd-d934-4b70-a25c-eac369d49384/mesh.obj.zip/New_Building_E_Perimeter_Scan_-_4_Altitudes-3D_Mesh.zip",
+        "contentLength": 39369322,
+        "contentType": "application/x-obj",
+        "sketchfabId": "ddbeeace7f8a4591b361492f97565ff6"
+      }
+    },
+    "mineMeasurement": {},
+    "potree": {
+      "current": {
+        "id": "831fb9df-af8e-4d52-ab75-4855c6fb1cf2",
+        "fromProcess": "67f584fd-d934-4b70-a25c-eac369d49384",
+        "created": "2020-09-04T22:49:08.734Z",
+        "name": "Point Cloud",
+        "processType": "pix4d",
+        "settings": {
+          "pix4d": {
+            "photoCount": 117,
+            "gigapixels": 2.335537152,
+            "gcpTagsCount": 0,
+            "processingOptions": {
+              "meshResolution": "Medium",
+              "pointCloudSize": "Half",
+              "gsdMultiple": 1,
+              "geometricallyVerified": true,
+              "matchStrategy": "AutoOblique",
+              "useProcessingArea": true,
+              "rcs": false,
+              "version": "default",
+              "imageVerticalCS": "WGS84"
+            }
+          }
+        },
+        "url": "https://sitescan-data.arcgis.com/hMHYMulBh13OSZ72kUmaj90iLGxPzP0PwA2aAVYAAQAA/w/a44c540f-9e51-4008-ae55-bc2b6d553996/p4d-67f584fd-d934-4b70-a25c-eac369d49384/potree/cloud.js",
+        "contentType": "application/x-potree"
+      }
+    },
+    "wgs84dem": {
+      "current": {
+        "id": "7ca71635-33f0-4cb9-a449-dac462f88463",
+        "fromProcess": "67f584fd-d934-4b70-a25c-eac369d49384",
+        "created": "2020-09-04T22:48:21.093Z",
+        "name": "Resized DEM",
+        "processType": "pix4d",
+        "settings": {
+          "pix4d": {
+            "photoCount": 117,
+            "gigapixels": 2.335537152,
+            "gcpTagsCount": 0,
+            "processingOptions": {
+              "meshResolution": "Medium",
+              "pointCloudSize": "Half",
+              "gsdMultiple": 1,
+              "geometricallyVerified": true,
+              "matchStrategy": "AutoOblique",
+              "useProcessingArea": true,
+              "rcs": false,
+              "version": "default",
+              "imageVerticalCS": "WGS84"
+            }
+          }
+        },
+        "url": "https://sitescan-data.arcgis.com/JP3CM9pwCYmS83BTIWg7OqMiLmogi9EPwA2aAV0AAAAA/d/a44c540f-9e51-4008-ae55-bc2b6d553996/p4d-67f584fd-d934-4b70-a25c-eac369d49384/wgs84_dsm.tif/New_Building_E_Perimeter_Scan_-_4_Altitudes-Resized_DEM.tiff",
+        "contentLength": 15420967,
+        "contentType": "image/tiff"
+      }
+    },
+    "laz": {
+      "current": {
+        "id": "38d9761d-bf99-4a1a-8fc4-80df98b526c1",
+        "fromProcess": "67f584fd-d934-4b70-a25c-eac369d49384",
+        "created": "2020-09-04T22:49:08.734Z",
+        "name": "Point Cloud (LAZ)",
+        "processType": "pix4d",
+        "settings": {
+          "pix4d": {
+            "photoCount": 117,
+            "gigapixels": 2.335537152,
+            "gcpTagsCount": 0,
+            "processingOptions": {
+              "meshResolution": "Medium",
+              "pointCloudSize": "Half",
+              "gsdMultiple": 1,
+              "geometricallyVerified": true,
+              "matchStrategy": "AutoOblique",
+              "useProcessingArea": true,
+              "rcs": false,
+              "version": "default",
+              "imageVerticalCS": "WGS84"
+            }
+          }
+        },
+        "url": "https://sitescan-data.arcgis.com/olVdBeA0f8udKYczJPh7RjlDFuffmUC2wA2aAV4AAAAA/d/a44c540f-9e51-4008-ae55-bc2b6d553996/p4d-67f584fd-d934-4b70-a25c-eac369d49384/pointcloud.laz/New_Building_E_Perimeter_Scan_-_4_Altitudes-Point_Cloud_LAZ.laz",
+        "contentLength": 61087838,
+        "contentType": "application/x-laz"
+      }
+    },
+    "pannellum": {}
+  },
+  "processingArea": {
+    "coordinates": [
+      [
+        [
+          -117.19742309581142,
+          34.05805542849744
+        ],
+        [
+          -117.19716356714298,
+          34.05806119905575
+        ],
+        [
+          -117.19663824212651,
+          34.058220220162085
+        ],
+        [
+          -117.1964047891539,
+          34.05830070257276
+        ],
+        [
+          -117.19630808976648,
+          34.058495004300134
+        ],
+        [
+          -117.19634068126136,
+          34.05905067941201
+        ],
+        [
+          -117.19643738064879,
+          34.059244981139386
+        ],
+        [
+          -117.1966708336214,
+          34.05932546355006
+        ],
+        [
+          -117.19717733498979,
+          34.059340239256926
+        ],
+        [
+          -117.19742953823177,
+          34.0593359396491
+        ],
+        [
+          -117.19766299120438,
+          34.05925545723843
+        ],
+        [
+          -117.19775969059181,
+          34.05906115551105
+        ],
+        [
+          -117.19775324817145,
+          34.05833021263549
+        ],
+        [
+          -117.19765654878402,
+          34.05813591090811
+        ],
+        [
+          -117.19742309581142,
+          34.05805542849744
+        ]
+      ]
+    ],
+    "type": "Polygon"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "title": "JobSite Status - Esri Building E",
+  "description": "This application allows users to dynamically inspect the status of a job site over various construction phases and times using orthorectified images, integrated meshes, and building scene layers.",
+  "appid": "",
+  "group": "94228862862f44ba86f8ecd1ab8ee977",
+  "webmap": "",
+  "webscene": "",
+  "portalUrl": "https://www.arcgis.com/",
+  "oauthappid": null,
+  "proxyUrl": "",
+  "units": "dual",
+  "helperServices": {
+    "geometry": {
+      "url": null
+    },
+    "printTask": {
+      "url": null
+    },
+    "elevationSync": {
+      "url": null
+    },
+    "geocode": [
+      {
+        "url": null
+      }
+    ]
+  },
+  "ThemeTextColor": "",
+  "ThemeBackgroundColor": "",
+  "ThemeHighlightColor": ""
+}

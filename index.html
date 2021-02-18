@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- Responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <!-- End Responsive -->
+    <link rel="icon" href="./assets/favicon.ico" sizes="32x32" type="image/vnd.microsoft.icon">
+
+    <!-- DARK THEME -->
+    <!-- https://gosink.in/javascript-css-toggle-dark-light-theme-based-on-your-users-preferred-scheme/ -->
+    <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/css/calcite-web-dark.min.css">
+    <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="https://js.arcgis.com/4.18/esri/themes/dark/main.css">
+    <!-- LIGHT THEME -->
+    <link rel="stylesheet" media="(prefers-color-scheme: no-preference), (prefers-color-scheme: light)" href="https://s3-us-west-1.amazonaws.com/patterns.esri.com/files/calcite-web/1.2.5/css/calcite-web.min.css">
+    <link rel="stylesheet" media="(prefers-color-scheme: no-preference), (prefers-color-scheme: light)" href="https://js.arcgis.com/4.18/esri/themes/light/main.css">
+
+    <link rel="stylesheet" href="./styles/main.css">
+    <script src="./app/dojo.js"></script>
+    <script src="https://js.arcgis.com/4.18/"></script>
+    <script>require(["Application/init"]);</script>
+  </head>
+  <body class="">
+
+    <!-- DETAILS -->
+    <div class="js-modal modal-overlay" data-modal="app-details-dialog">
+      <div class="modal-content column-14" aria-labelledby="modal" role="dialog">
+        <div class="content-row trailer-half">
+          <div class="app-title font-size-3 text-theme">Details</div>
+          <div class="js-modal-toggle esri-interactive icon-ui-close" aria-label="close-modal"></div>
+        </div>
+        <div class="app-description panel trailer-half">
+          This application allows users to dynamically inspect the status of a job site over various construction phases and times using orthorectified images, integrated meshes, and building scene layers.
+        </div>
+        <div class="content-row leader-1">
+          <img class="light-hide left" src="./assets/esri_science_of_where_white.png">
+          <img class="dark-hide left" src="./assets/esri_science_of_where.png">
+          <div class="content-row">
+            <label class="content-row trailer-0 margin-right-1">
+              <div class="inline-block font-size--2">hide on startup&nbsp;</div>
+              <input id="hide-startup-input" type="checkbox" style="vertical-align:middle;">
+            </label>
+            <button class="btn js-modal-toggle">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FLIGHT DETAILS DIALOG -->
+    <div class="js-modal modal-overlay" data-modal="flight-dialog">
+      <div class="modal-content column-16" aria-labelledby="modal" role="dialog">
+        <div class="content-row trailer-half">
+          <div class="font-size-3 text-theme">Flight Details</div>
+          <div class="js-modal-toggle esri-interactive icon-ui-close" aria-label="close-modal"></div>
+        </div>
+        <div id="flight-details-panel" class="panel trailer-half"></div>
+        <div class="content-row leader-1">
+          <img class="light-hide left" src="./assets/esri_science_of_where_white.png">
+          <img class="dark-hide left" src="./assets/esri_science_of_where.png">
+          <div class="content-row">
+            <div></div>
+            <button class="btn js-modal-toggle">OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SITE SCAN SIGN IN -->
+    <div class="js-modal modal-overlay" data-modal="signin-dialog">
+      <div class="modal-content column-8" aria-labelledby="modal" role="dialog">
+        <div class="content-row trailer-half">
+          <div class="font-size-3 text-theme">Site Scan Sign In</div>
+        </div>
+        <div class="panel trailer-half">
+          <label class="trailer-half">
+            <span>Email</span>
+            <input id="sitescan-user-email-input" type="email" required>
+          </label>
+          <label class="trailer-0">
+            <span>Password</span>
+            <input id="sitescan-user-pwd-input" type="password" required>
+          </label>
+        </div>
+        <div class="content-row leader-half">
+          <div id="sitescan-signin-label" class="text-red font-size--3 hide"></div>
+        </div>
+        <div class="content-row leader-quarter">
+          <img class="light-hide left" src="./assets/esri_science_of_where_white.png">
+          <img class="dark-hide left" src="./assets/esri_science_of_where.png">
+          <div class="content-row">
+            <div></div>
+            <div>
+              <button id="signin-ok-btn" class="btn btn-disabled">OK</button>
+              <button class="btn btn-red js-modal-toggle">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRINT SIDE DRAWER -->
+    <div class="drawer drawer-right js-drawer" data-drawer="print-drawer" tabindex="1">
+      <nav class="drawer-nav" role="navigation">
+        <div id="print-node"></div>
+      </nav>
+    </div>
+
+    <!-- TOP NAVIGATION -->
+    <header id="header-panel" class="content-row padding-left-1 padding-right-1">
+      <!-- APP TITLE -->
+      <span class="app-title top-nav-title header-text"></span>
+      <!--  CENTER ALIGNED -->
+      <div id="header-tools" class="content-row btn-disabled">
+
+        <div class="top-nav-link header-text esri-interactive margin-right-half tooltip tooltip-right" aria-label="animate through all missions">
+          <span id="play-pause-btn" class="btn btn-small btn-theme icon-ui-play">Animate</span>
+          <span id="loop-btn" class="btn btn-small btn-theme icon-ui-refresh icon-ui-flush" title="loop"></span>
+        </div>
+        <div class="top-nav-link header-text esri-interactive margin-right-half tooltip tooltip-right" aria-label="spin around view center">
+          <span id="view-spin-btn" class="btn btn-small btn-theme icon-ui-rotate">Spin</span>
+        </div>
+        <div class="top-nav-link header-text esri-interactive margin-right-half tooltip tooltip-right" aria-label="measure distance or area">
+           <span id="measure-btn" class="btn btn-small btn-theme">
+             <span class="esri-icon-measure margin-right-quarter"></span>
+             <span>Measure</span>
+           </span>
+        </div>
+        <div class="top-nav-link header-text esri-interactive margin-right-half tooltip tooltip-right" aria-label="slice">
+          <span id="building-slice-btn" class="btn btn-small btn-theme icon-ui-up-down-arrows">Slice</span>
+        </div>
+        <div class="top-nav-link header-text esri-interactive margin-right-half tooltip tooltip-right" aria-label="building explorer">
+          <span id="building-explorer-btn" class="btn btn-small btn-theme icon-ui-home hide">Building</span>
+        </div>
+
+        <!-- SITE SCAN BUTTON -->
+        <div id="sitescan-link" class="top-nav-link header-text esri-interactive margin-right-half tooltip tooltip-right" aria-label="Site Scan">
+          <span id="sitescan-btn" class="btn btn-small btn-theme hide">
+            <img src="./assets/SiteScan.png" width="16" height="16">
+            <span>Site Scan</span>
+          </span>
+        </div>
+
+      </div>
+      <!-- RIGHT ALIGNED -->
+      <div class="content-row">
+
+        <!-- TOGGLE VIEW TYPE -->
+        <div class="top-nav-link header-text esri-interactive margin-right-2 tooltip tooltip-left" aria-label="toggle view type">
+          <label id="display-type-switch" class="toggle-switch btn-small btn-disabled leader-0 trailer-0">
+            <span id="view-type-label-2D" class="toggle-switch-label font-size-0">2D</span>
+            <input id="display-type-input" type="checkbox" class="toggle-switch-input" checked>
+            <span class="toggle-switch-track"></span>
+            <span id="view-type-label-3D" class="toggle-switch-label font-size-0">3D</span>
+          </label>
+        </div>
+
+        <!-- 2D PRINT -->
+        <div class="top-nav-link header-text esri-interactive tooltip tooltip-left" aria-label="print map">
+          <div id="print-action-node" class="btn btn-small btn-theme icon-ui-printer icon-ui-flush js-drawer-toggle btn-disabled" data-drawer="print-drawer"></div>
+        </div>
+
+        <!-- APP DETAILS -->
+        <div class="top-nav-link header-text esri-interactive tooltip tooltip-left" aria-label="application info">
+          <div class="btn btn-small btn-theme icon-ui-description icon-ui-flush js-modal-toggle" data-modal="app-details-dialog"></div>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <div id="main-container">
+
+      <!-- LEFT CONTAINER -->
+      <div id="options-container" class="panel panel-white panel-no-padding panel-no-border column-7">
+
+        <div id="options-label" class="panel panel-no-border content-row">
+          <div class="font-size-1 text-theme">Flight Collection Dates</div>
+          <div class="font-size-0">
+            <span id="count-label">0</span>
+            <span>of</span>
+            <span id="total-label">0</span>
+          </div>
+        </div>
+
+        <aside class="js-accordion accordion">
+          <div id="filters-section" class="accordion-section btn-disabled">
+            <h4 id="filters-title" class="accordion-title content-row">
+              <div class="padding-left-half">
+                <span class="accordion-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 32 32" class="svg-icon"><path d="M28 9v5L16 26 4 14V9l12 12L28 9z"/></svg>
+                </span>
+                <span class="font-size-0">Filters</span>
+                <span id="selectors-container">
+                  <span class="filter-selector hide" title="remove filter" data-filter="drone"></span>
+                  <span class="filter-selector hide" title="remove filter" data-filter="flight"></span>
+                  <span class="filter-selector hide" title="remove filter" data-filter="view"></span>
+                </span>
+              </div>
+              <div class="padding-right-half">
+                <span class="font-size--1">Sort</span>
+                <span class="sort-option esri-interactive" title="first flown" data-sort="oldest">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" class="svg-icon">
+                    <path d="M12 13h6v2h-6v-2zm0 6h10v-2H12v2zm0 4h14v-2H12v2zm0 2v2h18v-2H12zm0-19L7 1 2 6v2.8l4-4V31h2V4.8l4 4V6z"/>
+                  </svg>
+                </span>
+                <span class="sort-option selected esri-interactive" title="most recent" data-sort="newest">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" class="svg-icon">
+                    <path d="M12 17h6v2h-6v-2zm0-2h10v-2H12v2zm0-4h14V9H12v2zm0-6v2h18V5H12zM8 17.5V1H6V27.2l-4-4V26l5 5 5-5v-2.8l-4 4v-9.7z"/>
+                  </svg>
+                </span>
+              </div>
+            </h4>
+            <div class="accordion-content panel panel-white">
+              <div id="filter-options" class="panel"></div>
+            </div>
+          </div>
+        </aside>
+
+        <aside id="missions-container" class="side-nav btn-disabled" aria-role="complementary">
+          <div class="side-nav-title">
+            <div id="missions-label" class="content-row">
+              <div>Drone</div>
+              <div>Flight</div>
+              <div>View</div>
+            </div>
+          </div>
+          <nav id="missions-list" role="navigation" aria-labelledby="sidenav"></nav>
+        </aside>
+
+      </div>
+
+      <!-- VIEW CONTAINERS -->
+      <div id="view-container" class="content-col panel panel-no-padding panel-no-border">
+        <div id="map-view-container" class="view-container loading animation-fade-out" data-type="2D"></div>
+        <div id="scene-view-container" class="view-container loading view-active animation-fade-in" data-type="3D"></div>
+      </div>
+
+      <!-- TOOLS PANEL -->
+      <div id="tools-panel" class="hide">
+
+        <!-- PLAYBACK PANEL -->
+        <div id="playback-panel" class="panel panel-no-padding panel-no-border hide">
+          <progress id="play-pause-progress" max="15000"></progress>
+          <div id="playback-mission-date-label" class="font-size-7 text-theme padding-left-half padding-right-half"></div>
+        </div>
+
+        <!-- SPIN PANEL -->
+        <div id="view-spin-panel" class="content-row panel panel-no-padding panel-no-border hide">
+          <button id="spin-left-btn" class="spin-btn btn btn-transparent text-theme icon-ui-arrow-left-circled icon-ui-flush font-size-4" title="spin left"></button>
+          <div id="spin-heading-label" class="spin-label text-center text-theme font-size-3" title="heading"></div>
+          <button id="spin-right-btn" class="spin-btn btn btn-transparent text-theme icon-ui-arrow-right-circled icon-ui-flush font-size-4" title="spin right"></button>
+        </div>
+
+        <!-- MEASURE -->
+        <div id="measure-panel" class="panel panel-no-border hide">
+          <span id="measure-btn-distance" class="btn btn-small btn-theme" title="measure distance">
+            <span class="esri-icon-measure-line margin-right-quarter"></span>
+            <span>distance</span>
+          </span>
+          <span id="measure-btn-area" class="btn btn-small btn-theme" title="measure area">
+            <span class="esri-icon-measure-area margin-right-quarter"></span>
+            <span>area</span>
+          </span>
+        </div>
+
+      </div>
+
+      <!-- SITE SCAN PANEL -->
+      <div id="sitescan-panel" class="panel panel-no-padding panel-no-border column-7 animate-fade-in hide">
+        <div class="panel panel-white">
+          <div class="content-row trailer-quarter">
+            <div class="content-row">
+              <img src="./assets/SiteScan.png" width="24" height="24">
+              <span class="font-size-1 margin-left-half text-theme">Site Scan</span>
+            </div>
+            <button id="sitescan-signin-btn" class="btn-link font-size--3 right">Sign In</button>
+          </div>
+          <div class="panel">
+            <label class="trailer-half font-size-0">
+              <span>Organization:</span>
+              <select id="sitescan-org-select" class="hide"></select>
+            </label>
+            <label class="trailer-0 font-size-0">
+              <span>Project:</span>
+              <select id="sitescan-project-select" class="hide"></select>
+            </label>
+          </div>
+        </div>
+        <aside id="sitescan-container" class="side-nav" aria-role="complementary">
+          <div class="side-nav-title">
+            <span>
+              last modified:<span id="sitescan-project-modified-label"></span>
+            </span>
+            <mark id="sitescan-count" class="label right">0</mark>
+          </div>
+          <nav id="sitescan-list" role="navigation" aria-labelledby="sidenav"></nav>
+        </aside>
+      </div>
+
+    </div>
+  </body>
+</html>
