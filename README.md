@@ -8,9 +8,9 @@ This application allows users to dynamically inspect the status of a job site ov
 * Share content as layer items to the Group.
   * Orthomosaic as Tiled Layer
     * Displayed in 2D view
-* Integrated Mesh as Scene Layer
+  * Integrated Mesh as Scene Layer
     * Displayed in 3D view
-* Building Layer as Scene Layer (optional, one per project/job site)
+  * Building Layer as Scene Layer (optional, one per project/job site)
     * Displayed in 3D view
  
 
