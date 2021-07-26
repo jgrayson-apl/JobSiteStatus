@@ -24,10 +24,10 @@ Critical to the process is providing some standardized details about each flight
 
 * Ortho and Mesh Tag Template
     * jobsite.{DATE}.{DRONE}.{FLIGHT}.{VIEW}
-    * {DATE} = YYYYMMDD
-    * {DRONE} = no spaces or special characters
-    * {FLIGHT} = no spaces or special characters
-    * {VIEW} = no spaces or special characters
+      * {DATE} = YYYYMMDD
+      * {DRONE} = no spaces or special characters
+      * {FLIGHT} = no spaces or special characters
+      * {VIEW} = no spaces or special characters
   
 
 #### Example Ortho and Mesh Tags
