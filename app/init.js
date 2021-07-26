@@ -26,13 +26,16 @@ define([
 ], function(require, OAuthInfo, IdentityManager, Portal,
             applicationBaseConfig, applicationConfig, ApplicationBase, Application){
 
+  const portalSettings = {}
+
   const appConfig = JSON.parse(applicationConfig);
   if(appConfig.oauthappid && appConfig.oauthappid.length){
     const info = new OAuthInfo({ appId: appConfig.oauthappid, popup: true });
     IdentityManager.registerOAuthInfos([info]);
+    portalSettings.authMode = "immediate";
   }
 
-  const portal = new Portal({ authMode: "immediate" });
+  const portal = new Portal(portalSettings);
   portal.load().then(() => {
 
     new ApplicationBase({
