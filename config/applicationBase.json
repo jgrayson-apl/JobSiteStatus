@@ -40,10 +40,10 @@
   ],
   "webMap": {
     "default": "6bf3c5a801cd43cab9c8f9281582fa2e",
-    "fetch": false
+    "fetch": true
   },
   "webScene": {
     "default": "2d0af95522c442879a1c25d2d4df3763",
-    "fetch": false
+    "fetch": true
   }
 }

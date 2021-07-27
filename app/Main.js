@@ -29,6 +29,8 @@ define([
   "esri/core/promiseUtils",
   "esri/portal/Portal",
   "esri/Map",
+  "esri/WebMap",
+  "esri/WebScene",
   "esri/views/MapView",
   "esri/views/SceneView",
   "esri/layers/Layer",
@@ -44,7 +46,7 @@ define([
 ], function(calcite, declare, ApplicationBase,
             i18n, itemUtils, domHelper, domConstruct,
             esriRequest, IdentityManager, Evented, watchUtils, promiseUtils, Portal,
-            EsriMap, MapView, SceneView, Layer,
+            EsriMap, WebMap, WebScene, MapView, SceneView, Layer,
             projection, SpatialReference, webMercatorUtils,
             Home, Print, Compass, Measurement,
             BuildingExplorer, SliceViewModel){
@@ -78,6 +80,8 @@ define([
 
       // DESCRIPTION //
       this.base.config.description && document.querySelectorAll('.app-description').forEach(node => node.innerHTML = this.base.config.description);
+
+      console.info(this.base.results)
 
       // GROUP INFO //
       this.base.groupInfo = this.base.results.groupInfos[0].value.results[0];
@@ -192,12 +196,17 @@ define([
     createSceneView: function(initialExtent){
       return promiseUtils.create((resolve, reject) => {
 
+        let map = null;
+        if(this.base.results.webSceneItems && this.base.results.webSceneItems.length){
+          const mapItem = this.base.results.webSceneItems[0].value;
+          map = new WebScene({ portalItem: mapItem });
+        } else {
+          map = new EsriMap({ basemap: 'topo-vector', ground: 'world-elevation' });
+        }
+
         const sceneView = new SceneView({
           container: 'scene-view-container',
-          map: new EsriMap({
-            basemap: 'topo-vector',
-            ground: 'world-elevation'
-          }),
+          map: map,
           constraints: { snapToZoom: false, maxZoom: 0 },
           extent: initialExtent.clone()
         });
@@ -225,11 +234,17 @@ define([
     createMapView: function(initialExtent){
       return promiseUtils.create((resolve, reject) => {
 
+        let map = null;
+        if(this.base.results.webMapItems && this.base.results.webMapItems.length){
+          const mapItem = this.base.results.webMapItems[0].value;
+          map = new WebMap({ portalItem: mapItem });
+        } else {
+          map = new EsriMap({ basemap: 'topo-vector' });
+        }
+
         const mapView = new MapView({
           container: 'map-view-container',
-          map: new EsriMap({
-            basemap: 'topo-vector'
-          }),
+          map: map,
           constraints: { snapToZoom: false },
           extent: initialExtent.clone()
         });
