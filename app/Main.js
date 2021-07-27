@@ -81,7 +81,8 @@ define([
       // DESCRIPTION //
       this.base.config.description && document.querySelectorAll('.app-description').forEach(node => node.innerHTML = this.base.config.description);
 
-      console.info(this.base.results)
+      // STARTUP DIALOG //
+      this.initializeStartupDialog();
 
       // GROUP INFO //
       this.base.groupInfo = this.base.results.groupInfos[0].value.results[0];
@@ -94,10 +95,7 @@ define([
       if(this.base.groupItems && !this.base.groupItems.length){
         throw new Error(`No relevant items found in Group: ${this.base.config.group}`);
       }
-
-      // STARTUP DIALOG //
-      this.initializeStartupDialog();
-
+      
       // GET FLIGHT LAYERS //
       this.getFlightLayers().then(({ jobsiteLayers, initialExtent }) => {
 
@@ -770,13 +768,26 @@ define([
     unionLayerExtents: function(layers){
       return layers.reduce((extent, layer) => {
 
+        let layerFullExtent = layer.fullExtent.clone();
+
+        if(extent){
+          if(!layerFullExtent.spatialReference.equals(extent.spatialReference)){
+            layerFullExtent = projection.project(layerFullExtent, extent.spatialReference);
+          }
+          return extent.union(layerFullExtent);
+        } else {
+          return layerFullExtent;
+        }
+
+        /*
         const layerExtentWebMercator = layer.fullExtent.spatialReference.isWebMercator
           ? layer.fullExtent.clone()
           : layer.fullExtent.spatialReference.isWGS84
             ? webMercatorUtils.geographicToWebMercator(layer.fullExtent)
             : projection.project(layer.fullExtent, SpatialReference.WebMercator)
-
         return (extent != null) ? extent.union(layerExtentWebMercator) : layerExtentWebMercator;
+        */
+
       }, null);
     },
 
@@ -829,10 +840,14 @@ define([
             return validLayers;
           }, []);
 
-          // INITIAL EXTENT //
-          const initialExtent = this.unionLayerExtents(jobsiteLayers);
+          // LOAD PROJECTION ENGINE //
+          projection.load().then(() => {
 
-          resolve({ jobsiteLayers, initialExtent });
+            // INITIAL EXTENT //
+            const initialExtent = this.unionLayerExtents(jobsiteLayers);
+
+            resolve({ jobsiteLayers, initialExtent });
+          });
         }).catch(reject);
 
       });
