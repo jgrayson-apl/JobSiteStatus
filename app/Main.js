@@ -61,6 +61,15 @@ define([
       this.base = null;
       // CALCITE WEB //
       calcite.init();
+
+      // ANALYTICS //
+      window.dataLayer = {
+        pageType: 'esri-geoxc-apl-demo',
+        pagePath: window.location.pathname,
+        pageTitle: 'JobSite Status - Esri Building E',
+        pageName: 'JobSiteStatus'
+      };
+
     },
 
     /**
