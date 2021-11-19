@@ -1,8 +1,21 @@
 # JobSite Status
 This application allows users to dynamically inspect the status of a job site over various construction phases and times using orthorectified images, integrated meshes, and building scene layers.
-       
 
-## How to configure your own content
+## Deployment
+
+This application is built as a static web page. Download and copy the folder and code to a web server.
+
+## Configuration
+
+Configure the Group, Web Map, and Web Scene in the [/config/application.json](https://github.com/jgrayson-apl/JobSiteStatus/blob/master/config/application.json) file.
+
+* *group*: the id of a publicly shared group
+* *webmap*: item id of the Web Map used in the 2D view
+* *webscene*: item id of the Web Scene used in the 3D view
+
+> Note: OAuth has not been implemented in this application.  The Group, Web Map, Web Scene, and all content must be shared publicly.
+
+## How to configure your own content for this demo application
 
 * Create a new public Group in ArcGIS.com.
 * Share content as layer items to the Group.
